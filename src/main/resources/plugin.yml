@@ -1,0 +1,6 @@
+name: EnhancedCustomBlock
+version: '${project.version}'
+main: me.nightkungz.enhancedcustomblock.EnhancedCustomBlock
+api-version: 1.18
+authors: [NightKunGz]
+depend: [RedLib]
