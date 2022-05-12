@@ -14,8 +14,10 @@ import java.io.IOException;
 public class CustomBlockListener implements Listener {
 
     private final EnhancedCustomBlock plugin;
+    private final YamlDocument config;
     public CustomBlockListener(EnhancedCustomBlock plugin) {
         this.plugin = plugin;
+        config = plugin.getConfiguration();
     }
 
     @EventHandler
@@ -23,8 +25,6 @@ public class CustomBlockListener implements Listener {
 
         Player player = event.getPlayer();
         ItemStack item = event.getItemInHand();
-
-        YamlDocument config = plugin.getConfiguration();
 
         config.getOptionalString("message").ifPresent(
                 (message) -> player.sendMessage(ColorUtil.color(message)));
