@@ -13,8 +13,12 @@ import java.io.IOException;
 
 public class CustomBlockListener implements Listener {
 
-    private EnhancedCustomBlock plugin = EnhancedCustomBlock.getInstance();
+    private EnhancedCustomBlock plugin;
+
     private YamlDocument config = plugin.getConfiguration();
+    public CustomBlockListener(EnhancedCustomBlock plugin) {
+        this.plugin = plugin;
+    }
 
     @EventHandler
     public void onPlayerPlacesCustomBlock(BlockPlaceEvent event) throws IOException {
@@ -22,9 +26,7 @@ public class CustomBlockListener implements Listener {
         Player player = event.getPlayer();
         ItemStack item = event.getItemInHand();
 
-        plugin.getConfiguration().getOptionalString("message").ifPresent(
+        config.getOptionalString("message").ifPresent(
                 (message) -> player.sendMessage(ColorUtil.color(message)));
-
-
     }
 }

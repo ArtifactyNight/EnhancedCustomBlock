@@ -14,19 +14,12 @@ import java.io.IOException;
 
 public final class EnhancedCustomBlock extends JavaPlugin {
 
-    private static EnhancedCustomBlock instance;
-    public static EnhancedCustomBlock getInstance() {
-        return instance;
-    }
-
     private YamlDocument config;
 
     @Override
     public void onEnable() {
 
-        instance = this;
-
-        getServer().getPluginManager().registerEvents(new CustomBlockListener(), this);
+        getServer().getPluginManager().registerEvents(new CustomBlockListener(this), this);
 
         try {
             config = YamlDocument.create(new File(getDataFolder(), "config.yml"), getResource("config.yml"),
